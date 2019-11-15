@@ -1,0 +1,17 @@
+{
+  "env": {
+    "test": {
+      "plugins": [
+        ["istanbul", {
+          "exclude": [
+            '**/*spec.*',
+            '**/*page-object*',
+            '**/*stories*',
+            '**/index*',
+            '**/PageObject*'
+          ]
+        }]
+      ]
+    }
+  }
+}
