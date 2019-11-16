@@ -2,7 +2,6 @@ import React, { Suspense, lazy, useState } from 'react';
 
 import { PageLoader, LoaderService } from './components';
 import { BundleLoadError } from './pages/bundle-load-error';
-import { Login } from './pages/login';
 import AuthAPI from './store/services/auth';
 import defaultHistory from './store/history';
 
@@ -10,7 +9,7 @@ import './App.scss';
 
 // Create two separate bundles so the login page can
 // load as quickly as possible.
-const Home = lazy(() => import('./pages/home/Home.jsx'));
+const Main = lazy(() => import('./pages/main/Main.jsx'));
 
 export default function App({
   history
@@ -18,14 +17,12 @@ export default function App({
   history = history || defaultHistory;
   const token = AuthAPI.getToken();
 
-  const [authenticated, setAuthenticated] = useState(!!token);
+  const [, setAuthenticated] = useState(!!token);
 
-  const onAuthSuccess = () => setAuthenticated(true);
+  // const onAuthSuccess = () => setAuthenticated(true);
   const onAuthFailure = () => setAuthenticated(false);
 
-  const view = authenticated
-    ? <Home onAuthFailure={onAuthFailure} history={history} />
-    : <Login onSuccess={onAuthSuccess} />;
+  const view = <Main onAuthFailure={onAuthFailure} history={history} />;
 
   LoaderService.stop();
 

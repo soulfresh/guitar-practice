@@ -8,9 +8,8 @@
  * @const {Map} Routes
  */
 export const Routes = new Map([
-  [ 'HOME'   , {path: '/'}],
-  [ 'LOGIN'  , {path: '/login'}],
-  [ 'FOO'    , {path: '/foo/:fooId'}],
+  [ 'HOME'          , {path: '/'}],
+  [ 'LOGIN'         , {path: '/login'}],
 ]);
 
 /*
