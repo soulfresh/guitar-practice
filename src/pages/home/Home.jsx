@@ -1,16 +1,73 @@
 import React, {useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
-import ReactSlider from 'react-slider';
+import { useDispatch, useSelector } from 'react-redux';
+
+import {
+  GuitarNeck,
+  StringSelect,
+  Slider,
+  Checkbox,
+} from '~components';
+
+import {
+  notes,
+  fourOctives,
+  noteNames,
+  notesInAnOctive,
+  noteIndex as getNoteIndex,
+  noteAtIndex,
+  standardTuning,
+  fretsForTuning,
+  selectPreferencesInitialized,
+  selectPreferences,
+  getPreferences,
+  setPreference,
+} from '~store';
 
 import './Home.scss';
 
-export default function Home(props) {
-  const notes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
-  const [speed, setSpeed] = useState(10);
-  const [noteIndex, setNoteIndex] = useState();
+/**
+ * Shuffles array in place.
+ * @param {Array} a items An array containing the items.
+ */
+function shuffle(a) {
+  a = a.slice();
+  var j, x, i;
+  for (i = a.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    x = a[i];
+    a[i] = a[j];
+    a[j] = x;
+  }
+  return a;
+}
+
+export function Home({
+  tuning,
+  setTuning,
+  speed,
+  setSpeed,
+  useSharps,
+  setUseSharps,
+  currentStrings,
+  setCurrentStrings,
+}) {
+  const generateShuffledNotes = (includeSharps) =>
+    shuffle( includeSharps ? fourOctives : noteNames );
+
+  const [shuffledNotes, setShuffledNotes] = useState(generateShuffledNotes(useSharps));
+  const [noteIndex, setNoteIndex] = useState(
+    getNoteIndex(shuffledNotes[0])
+  );
+  const note = noteAtIndex(noteIndex);
 
   const randomNote = () => {
-    const next = Math.round(Math.random() * (notes.length - 1));
+    const nextNote = shuffledNotes.pop();
+    const next = getNoteIndex(nextNote);
+
+    if (shuffledNotes.length === 0) {
+      setShuffledNotes(generateShuffledNotes(useSharps));
+    }
+
     return next === noteIndex ? randomNote() : next;
   }
 
@@ -20,34 +77,78 @@ export default function Home(props) {
 
   const changeSpeed = (s) => {
     setSpeed(s);
-  }
+  };
+
+  const changeSharps = () => {
+    setUseSharps(!useSharps);
+    setShuffledNotes(generateShuffledNotes(!useSharps));
+  };
 
   useEffect(() => {
     let s = !noteIndex ? 0 : speed;
     const timer = setTimeout(nextNote, s * 1000);
     return () => clearTimeout(timer);
-  })
+  });
 
   return (
     <div className="home">
-      <div className="note">{ notes[noteIndex] }</div>
+      <div className="big-note" onClick={nextNote}>{ note }</div>
       <div className="controls">
         <label>Speed
-          <ReactSlider
-            min={3}
+          <Slider
+            min={1}
             max={30}
             value={speed}
-            className="slider"
-            thumbClassName="thumb"
-            trackClassName="track"
-            renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
             onChange={changeSpeed}
           />
         </label>
+        <label>Include Sharps
+          <Checkbox value={useSharps} onChange={changeSharps} />
+        </label>
+      </div>
+      <div className="guitar-display">
+        <StringSelect
+          tuning={tuning}
+          selected={currentStrings}
+          onChange={setCurrentStrings}
+        />
+        <GuitarNeck
+          tuning={tuning}
+          fretCount={notesInAnOctive * 1.5}
+          notesToShow={notes}
+          stringsToShow={currentStrings}
+        />
       </div>
     </div>
   );
 }
 
 Home.propTypes = {
-};
+}
+
+export default function Connected() {
+  const dispatch = useDispatch();
+  const preferencesInitialized = useSelector(selectPreferencesInitialized);
+  const preferences = useSelector(selectPreferences);
+
+  if (preferencesInitialized) {
+    const tuning = preferences.tuning || standardTuning;
+    const nextProps = {
+      tuning,
+      setTuning: (tuning) => dispatch(setPreference('tuning', tuning)),
+      speed: preferences.speed || 3,
+      setSpeed: (speed) => dispatch(setPreference('speed', speed)),
+      useSharps: !!preferences.useSharps,
+      setUseSharps: (sharps) => dispatch(setPreference('useSharps', sharps)),
+      currentStrings: preferences.currentStrings || tuning.map((n, i) => i),
+      setCurrentStrings: (strings) => dispatch(setPreference('currentStrings', strings)),
+    };
+
+    return <Home {...nextProps} />
+  } else {
+    dispatch(getPreferences());
+    // TODO show loader
+    return null;
+  }
+}
+

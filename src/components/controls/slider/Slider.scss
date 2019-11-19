@@ -1,0 +1,27 @@
+@import 'theme';
+
+.slider {
+  padding: 20px 0;
+
+  .track-0 {
+    border: 2px solid color(primary);
+  }
+
+  .track-1 {
+    border: 2px solid foreground(divider);
+  }
+
+  .thumb {
+    padding: size(xs);
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+
+    font-size: font-size(xs);
+    color: foreground-dark();
+    background-color: background-dark();
+    border-radius: 50%;
+    cursor: ew-resize;
+    outline: none;
+  }
+}

@@ -2,8 +2,8 @@ $base-font: 15 !default;
 
 $font-family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont,
   'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
-$font-family-body: $font-family-sans-serif !default;
-$font-family-title: $font-family-sans-serif !default;
+$font-family-body: 'Poppins', $font-family-sans-serif !default;
+$font-family-title: 'Calistoga', $font-family-sans-serif !default;
 $font-family-code: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
   monospace !default;
 
@@ -56,8 +56,8 @@ $ls-m: 0.04em;
 ////
 @function rem($pixels) {
   // If you want to debug things in pixel values, uncomment the following...
-  // @return $pixels * 1px;
-  @return ($pixels / $base-font) * 1rem;
+  @return $pixels * 1px;
+  // @return ($pixels / $base-font) * 1rem;
 }
 
 ////

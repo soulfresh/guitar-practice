@@ -1,33 +1,31 @@
 @import 'theme';
 
 .home {
-  .note {
+  .big-note {
+    font-family: font-family(title);
     font-size: 350px;
-  }
-}
-
-.slider {
-  margin: 20px 0;
-
-  .track-0 {
-    border: 2px solid color(primary);
+    cursor: pointer;
   }
 
-  .track-1 {
-    border: 2px solid foreground(divider);
+  .controls {
+    padding: size(m);
   }
 
-  .thumb {
-    padding: size(xs);
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
+  .guitar-display {
+    display: flex;
+    flex-direction: column;
+    padding: size(m);
 
-    font-size: font-size(xs);
-    color: foreground-dark();
-    background-color: background-dark();
-    border-radius: 50%;
-    cursor: ew-resize;
-    outline: none;
+    @include breakpoint-up(md) {
+      flex-direction: row;
+
+      .string-select {
+        flex-direction: column-reverse;
+      }
+    }
+
+    .guitar-neck {
+      flex: 1;
+    }
   }
 }

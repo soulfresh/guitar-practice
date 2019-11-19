@@ -2,7 +2,11 @@ import { combineReducers } from 'redux';
 import { configureStore, getDefaultMiddleware } from 'redux-starter-kit';
 import { createLogger } from 'redux-logger';
 
-import exampleReducer, { selectExamples } from './example.store';
+import preferencesReducer, {
+  selectPreferences as subSelectPreferences,
+  selectInitialized as subSelectPreferencesInitialized,
+  selectPreferenceByName as subSelectPreferenceByName,
+} from './preferences/preferences.store';
 
 const middlewares = [...getDefaultMiddleware()];
 
@@ -15,7 +19,7 @@ if (process.env.NODE_ENV === `development`) {
 }
 
 export const reducerConfig = {
-  example: exampleReducer
+  preferences: preferencesReducer
 };
 
 const rootReducer = combineReducers(reducerConfig);
@@ -59,4 +63,10 @@ export default function createStore(onAuthFailure, initialState) {
 
 // Another potential option for combining selectors:
 // https://cmichel.io/redux-selectors-structure
-export const selectInputDevices = (state) => selectExamples(state.example);
+const prefs = state => state.preferences;
+export const selectPreferences = (state) =>
+  subSelectPreferences(prefs(state));
+export const selectPreferencesInitialized = (state) =>
+  subSelectPreferencesInitialized(prefs(state));
+export const selectPreferenceByName = (state, name) =>
+  subSelectPreferenceByName(prefs(state), name);

@@ -445,4 +445,14 @@ export default class PageObject {
     input.value = value;
     Simulate.change(input);
   }
+
+  dispatchEvent(element, eventName, eventConstructor = CustomEvent, options = {}) {
+    const eventOptions = {
+      view: window,
+      bubbles: true,
+      cancelable: true,
+      ...options,
+    };
+    element.dispatchEvent(new eventConstructor(eventName, eventOptions));
+  }
 }
