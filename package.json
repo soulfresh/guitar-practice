@@ -38,7 +38,7 @@
     "customize-cra": "^0.8.0",
     "env-cmd": "^10.0.1",
     "eslint-plugin-jasmine": "^2.10.1",
-    "gh-pages-deploy": "^0.5.1",
+    "gh-pages": "^2.1.1",
     "jasmine-core": "^3.4.0",
     "karma": "^4.1.0",
     "karma-chrome-launcher": "^3.1.0",
@@ -90,19 +90,10 @@
     "build-storybook": "build-storybook -s public",
     "deploy-storybook": "storybook-to-ghpages",
     "deploy-storybook-ci": "storybook-to-ghpages -- --ci",
-    "release": "gh-pages-deploy"
+    "release": "gh-pages -d build"
   },
   "storybook-deployer": {
     "commitMessage": "Deploy Storybook [skip ci]"
-  },
-  "gh-pages-deploy": {
-    "staticpath": "build",
-    "cname": "atomdance.com",
-    "prep": [
-      "build"
-    ],
-    "commit": "Updated App",
-    "noprompt": true
   },
   "browserslist": {
     "production": [
