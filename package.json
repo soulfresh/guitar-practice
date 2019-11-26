@@ -6,6 +6,7 @@
     "type": "git",
     "url": "github:soulfresh/project-name"
   },
+  "homepage": "https://soulfresh.github.io/guitar-practice/",
   "engines": {
     "node": ">=11.10.1"
   },
