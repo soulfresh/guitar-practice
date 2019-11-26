@@ -29,6 +29,7 @@ jobs:
     - name: yarn install, build, and test
       run: |
         yarn install
-        yarn validate-ci
+        yarn build
+        yarn release
       env:
         CI: true
