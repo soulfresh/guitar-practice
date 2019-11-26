@@ -48,24 +48,24 @@ $border-width: 2px;
       }
     }
 
+    // Center string
     &:nth-child(4) {
       .note {
-        &:nth-child(4)  { @include dot; }
-        &:nth-child(6)  { @include dot; }
-        &:nth-child(8)  { @include dot; }
-        &:nth-child(10) { @include dot; }
-        &:nth-child(16) { @include dot; }
-        &:nth-child(18) { @include dot; }
-        &:nth-child(20) { @include dot; }
-        &:nth-child(22) { @include dot; }
+        // 4th, 6th, 8th & 10th notes
+        &:nth-child(12n + 4),
+        &:nth-child(12n + 6),
+        &:nth-child(12n + 8),
+        &:nth-child(12n + 10) {
+          @include dot;
+        }
       }
     }
 
+    // 2nd & 5th string
     &:nth-child(3),
-    &:nth-child(5){
+    &:nth-child(5) {
       .note {
-        &:nth-child(13),
-        &:nth-child(25) {
+        &:nth-child(12n + 13) {
           @include dot;
         }
       }
@@ -89,7 +89,8 @@ $border-width: 2px;
         }
       }
 
-      &:nth-child(13) {
+      // Every octive after the first octive.
+      &:nth-child(12n + 13) {
         border-bottom-width: $border-width * 2;
         border-bottom-style: dashed;
       }
@@ -159,7 +160,8 @@ $border-width: 2px;
           border-top: none;
         }
 
-        &:nth-child(13) {
+        // Every octive after the first octive.
+        &:nth-child(12n + 13) {
           border-right-width: $border-width * 2;
           border-right-style: dashed;
         }

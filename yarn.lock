@@ -4853,6 +4853,11 @@ component-inherit@0.0.3:
   resolved "https://registry.yarnpkg.com/component-inherit/-/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
   integrity sha1-ZF/ErfWLcrZJ1crmUTVhnbJv8UM=
 
+component-raf@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/component-raf/-/component-raf-1.2.0.tgz#b2bc72d43f1b014fde7a4b3c447c764bc73ccbaa"
+  integrity sha1-srxy1D8bAU/eeks8RHx2S8c8y6o=
+
 compose-function@3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/compose-function/-/compose-function-3.0.3.tgz#9ed675f13cc54501d30950a486ff6a7ba3ab185f"
@@ -10450,6 +10455,14 @@ nice-try@^1.0.4:
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
 
+nk-request-timeout@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/nk-request-timeout/-/nk-request-timeout-1.0.1.tgz#e973ba7befa7c605b17311a5920833fb752d0f0d"
+  integrity sha1-6XO6e++nxgWxcxGlkggz+3UtDw0=
+  dependencies:
+    component-raf "^1.2.0"
+    time-now "^0.2.1"
+
 no-case@^2.2.0:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"
@@ -13457,6 +13470,11 @@ replace-ext@1.0.0:
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.0.tgz#de63128373fcbf7c3ccfa4de5a480c45a67958eb"
   integrity sha1-3mMSg3P8v3w8z6TeWkgMRaZ5WOs=
 
+request-interval@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/request-interval/-/request-interval-2.0.0.tgz#eb884017d0c79b92f1a805259be526805c731faf"
+  integrity sha1-64hAF9DHm5LxqAUlm+UmgFxzH68=
+
 request-promise-core@1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/request-promise-core/-/request-promise-core-1.1.2.tgz#339f6aababcafdb31c799ff158700336301d3346"
@@ -15101,6 +15119,11 @@ thunky@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-1.0.3.tgz#f5df732453407b09191dae73e2a8cc73f381a826"
   integrity sha512-YwT8pjmNcAXBZqrubu22P4FYsh2D4dxRmnWBOL8Jk8bUcRUtc5326kx32tuTmFDAZtLOGEVNl8POAR8j896Iow==
+
+time-now@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/time-now/-/time-now-0.2.1.tgz#acc8ad3202f259a9f2791a3473957d51544ac384"
+  integrity sha1-rMitMgLyWanyeRo0c5V9UVRKw4Q=
 
 timed-out@^4.0.1:
   version "4.0.1"

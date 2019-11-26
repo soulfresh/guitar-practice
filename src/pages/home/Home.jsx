@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import requestTimeout from 'nk-request-timeout';
 
 import {
   GuitarNeck,
@@ -7,16 +8,24 @@ import {
   Slider,
   Checkbox,
 } from '~components';
+import {
+  shuffle,
+  removeConsecutiveMatches,
+} from '~util/array';
 
 import {
   notes,
-  fourOctives,
+  // fourOctives,
   noteNames,
   notesInAnOctive,
-  noteIndex as getNoteIndex,
-  noteAtIndex,
+  // noteIndex,
+  // noteAtIndex,
+  // majorTriad,
   standardTuning,
-  fretsForTuning,
+  // fretsForTuning,
+  // chordDefinition,
+  // chordFretIndexes,
+  // addOctives,
   selectPreferencesInitialized,
   selectPreferences,
   getPreferences,
@@ -25,20 +34,21 @@ import {
 
 import './Home.scss';
 
-/**
- * Shuffles array in place.
- * @param {Array} a items An array containing the items.
- */
-function shuffle(a) {
-  a = a.slice();
-  var j, x, i;
-  for (i = a.length - 1; i > 0; i--) {
-    j = Math.floor(Math.random() * (i + 1));
-    x = a[i];
-    a[i] = a[j];
-    a[j] = x;
+function generateShuffledNotes(includeSharps, previous) {
+  const shuffled = shuffle( includeSharps ? notes : noteNames );
+  const newNotes = removeConsecutiveMatches(shuffled);
+
+  // If the first note of the new list matches the
+  // last note of the old list, remove the first note
+  // from the new list so we don't get the same letter twice.
+  if (previous && newNotes[0] === previous[previous.length - 1]) {
+    newNotes.shift();
   }
-  return a;
+
+  // TODO Handle the case that we now have a the same note twice
+  // due to removing the first note.
+
+  return newNotes;
 }
 
 export function Home({
@@ -51,48 +61,84 @@ export function Home({
   currentStrings,
   setCurrentStrings,
 }) {
-  const generateShuffledNotes = (includeSharps) =>
-    shuffle( includeSharps ? fourOctives : noteNames );
+  const fretCount = Math.round(notesInAnOctive * 1.5);
 
-  const [shuffledNotes, setShuffledNotes] = useState(generateShuffledNotes(useSharps));
-  const [noteIndex, setNoteIndex] = useState(
-    getNoteIndex(shuffledNotes[0])
+  const [{index, shuffledNotes, timer}, setState] = useReducer(
+    (state, newState) => ({...state, ...newState}),
+    {},
+    () => ({
+      index: 0,
+      shuffledNotes: generateShuffledNotes(useSharps),
+      timer: null,
+    })
   );
-  const note = noteAtIndex(noteIndex);
+  const note = shuffledNotes[index];
 
-  const randomNote = () => {
-    const nextNote = shuffledNotes.pop();
-    const next = getNoteIndex(nextNote);
-
-    if (shuffledNotes.length === 0) {
-      setShuffledNotes(generateShuffledNotes(useSharps));
+  const nextNote = (timer) => {
+    if (index >= shuffledNotes.length - 1) {
+      setState({
+        index: 0,
+        shuffledNotes: generateShuffledNotes(useSharps, shuffledNotes),
+        timer,
+      });
+    } else {
+      setState({
+        index: index + 1,
+        timer
+      });
     }
-
-    return next === noteIndex ? randomNote() : next;
-  }
-
-  const nextNote = () => {
-    setNoteIndex(randomNote());
   };
 
   const changeSpeed = (s) => {
     setSpeed(s);
+    if (timer) requestTimeout.clear(timer);
+    setState({timer: null});
   };
 
   const changeSharps = () => {
     setUseSharps(!useSharps);
-    setShuffledNotes(generateShuffledNotes(!useSharps));
+    if (timer) requestTimeout.clear(timer);
+    setState({
+      timer: null,
+      shuffledNotes: generateShuffledNotes(!useSharps, shuffledNotes)
+    });
   };
 
   useEffect(() => {
-    let s = !noteIndex ? 0 : speed;
-    const timer = setTimeout(nextNote, s * 1000);
-    return () => clearTimeout(timer);
+    const t = requestTimeout(speed * 1000, () => {
+      nextNote(t);
+    });
+    return () => {
+      requestTimeout.clear(t);
+    };
   });
+
+  // const string = Math.round(Math.random() * 3);
+  // let grouped = chordDefinition(majorTriad(note), string, 0, tuning);
+  // const indexes = chordFretIndexes(tuning, grouped);
+  // const maxFret = Math.max.apply(Math, indexes);
+  //
+  // // See if we can add any additional octives.
+  // if (maxFret + notesInAnOctive < fretCount) {
+  //   grouped = addOctives([grouped], maxFret, fretCount);
+  // }
 
   return (
     <div className="home">
       <div className="big-note" onClick={nextNote}>{ note }</div>
+      <div className="guitar-display">
+        <StringSelect
+          tuning={tuning}
+          selected={currentStrings}
+          onChange={setCurrentStrings}
+        />
+        <GuitarNeck
+          tuning={tuning}
+          fretCount={fretCount}
+          notesToShow={note}
+          stringsToShow={currentStrings}
+        />
+      </div>
       <div className="controls">
         <label>Speed
           <Slider
@@ -105,19 +151,6 @@ export function Home({
         <label>Include Sharps
           <Checkbox value={useSharps} onChange={changeSharps} />
         </label>
-      </div>
-      <div className="guitar-display">
-        <StringSelect
-          tuning={tuning}
-          selected={currentStrings}
-          onChange={setCurrentStrings}
-        />
-        <GuitarNeck
-          tuning={tuning}
-          fretCount={notesInAnOctive * 1.5}
-          notesToShow={notes}
-          stringsToShow={currentStrings}
-        />
       </div>
     </div>
   );

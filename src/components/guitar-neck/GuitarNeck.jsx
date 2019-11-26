@@ -31,6 +31,29 @@ export function Note({
   );
 }
 
+function showNote(note, string, octive, definitions) {
+  // If we received a single value, test it directly.
+  if (!Array.isArray(definitions)) {
+    // If we didn't receive a definition object, see if it matches
+    // the note, regardless of string.
+    if (typeof(definitions) !== 'object') {
+      return note === definitions;
+    }
+    // Otherwise, test against the definition.
+    else {
+      return note === definitions.note &&
+        string === definitions.string &&
+        (definitions.octive == null || octive === definitions.octive);
+    }
+  }
+  // If we received a list of definitions,
+  // see if this exists inside the list.
+  else {
+    const result = definitions.findIndex((d) => showNote(note, string, octive, d));
+    return result > -1;
+  }
+}
+
 export default function GuitarNeck({
   tuning,
   fretCount,
@@ -49,8 +72,9 @@ export default function GuitarNeck({
     for (let i = 0; i < fretCount; i++) {
       const noteIndex = openNoteIndex + i;
       const noteName = noteAtIndex(noteIndex);
-      const show = notesToShow.indexOf(noteName) > -1 &&
-        stringsToShow.indexOf(s) > -1;
+      const octive = Math.floor(i / notesInAnOctive);
+      const show = stringsToShow.indexOf(s) > -1 &&
+        showNote(noteName, s, octive, notesToShow);
 
       frets.push(
         <Note
@@ -79,6 +103,6 @@ export default function GuitarNeck({
 GuitarNeck.propTypes = {
   tuning: TuningPropType,
   fretCount: PropTypes.number,
-  notesToShow: PropTypes.oneOfType([TuningPropType, PropTypes.string]),
+  // notesToShow: PropTypes.oneOfType([TuningPropType, PropTypes.string]),
   stringsToShow: PropTypes.oneOfType([StringListPropType, PropTypes.number]),
 };
