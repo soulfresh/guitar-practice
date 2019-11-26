@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/guitar-practice/static/css/main.216f0b16.chunk.css",
-    "main.js": "/guitar-practice/static/js/main.05ef5f09.chunk.js",
-    "main.js.map": "/guitar-practice/static/js/main.05ef5f09.chunk.js.map",
+    "main.js": "/guitar-practice/static/js/main.64dfbaa9.chunk.js",
+    "main.js.map": "/guitar-practice/static/js/main.64dfbaa9.chunk.js.map",
     "runtime-main.js": "/guitar-practice/static/js/runtime-main.f88105a7.js",
     "runtime-main.js.map": "/guitar-practice/static/js/runtime-main.f88105a7.js.map",
     "static/js/2.838a7b4c.chunk.js": "/guitar-practice/static/js/2.838a7b4c.chunk.js",
@@ -13,7 +13,7 @@
     "static/js/4.3af341d1.chunk.js": "/guitar-practice/static/js/4.3af341d1.chunk.js",
     "static/js/4.3af341d1.chunk.js.map": "/guitar-practice/static/js/4.3af341d1.chunk.js.map",
     "index.html": "/guitar-practice/index.html",
-    "precache-manifest.2a7b583112d252b85d59df431d7fdee1.js": "/guitar-practice/precache-manifest.2a7b583112d252b85d59df431d7fdee1.js",
+    "precache-manifest.3eb9a0fd3f6252eecf104444377baf2c.js": "/guitar-practice/precache-manifest.3eb9a0fd3f6252eecf104444377baf2c.js",
     "service-worker.js": "/guitar-practice/service-worker.js",
     "static/css/4.1144119f.chunk.css.map": "/guitar-practice/static/css/4.1144119f.chunk.css.map",
     "static/css/main.216f0b16.chunk.css.map": "/guitar-practice/static/css/main.216f0b16.chunk.css.map",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.f88105a7.js",
     "static/js/2.838a7b4c.chunk.js",
     "static/css/main.216f0b16.chunk.css",
-    "static/js/main.05ef5f09.chunk.js"
+    "static/js/main.64dfbaa9.chunk.js"
   ]
 }

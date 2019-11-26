@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f4123901b44c4c3fe137e3d2047000f0",
+    "revision": "4542052807d951e0e86a311864af3fce",
     "url": "/guitar-practice/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/guitar-practice/static/css/4.1144119f.chunk.css"
   },
   {
-    "revision": "c5ced53ffa1c99a4c14c",
+    "revision": "d0e428743626d547a7a9",
     "url": "/guitar-practice/static/css/main.216f0b16.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/guitar-practice/static/js/4.3af341d1.chunk.js"
   },
   {
-    "revision": "c5ced53ffa1c99a4c14c",
-    "url": "/guitar-practice/static/js/main.05ef5f09.chunk.js"
+    "revision": "d0e428743626d547a7a9",
+    "url": "/guitar-practice/static/js/main.64dfbaa9.chunk.js"
   },
   {
     "revision": "398fd05d4124030026c8",
