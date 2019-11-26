@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import LoaderService from './loader.service';
 import PageLoaderPageObject from './PageLoader.page-object';
 import PageLoader from './PageLoader.jsx';
 
 describe('PageLoader', function() {
-  let page, loader, app;
+  let page, app;
 
   beforeEach(function() {
     page = new PageLoaderPageObject();

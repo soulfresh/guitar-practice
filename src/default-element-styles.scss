@@ -125,13 +125,12 @@ input, textarea {
 }
 
 label {
-  pointer: cursor;
+  cursor: pointer;
 
   input, textarea, select {
     margin-left: size(xs);
   }
 }
-
 
 
 // ======
@@ -171,5 +170,4 @@ select {
 option {
   color: foreground();
 }
-
 

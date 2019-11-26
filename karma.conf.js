@@ -40,17 +40,17 @@ var coverageConfig = {
   reporters: coverageReporters,
 };
 
-if (coverageType === 'ci' || coverageType === 'details') {
-  const min = 60;
-  coverageConfig.check = {
-    global: {
-      statements: min,
-      lines: min,
-      functions: min,
-      branches: min
-    }
-  };
-}
+// if (coverageType === 'ci' || coverageType === 'details') {
+//   const min = 60;
+//   coverageConfig.check = {
+//     global: {
+//       statements: min,
+//       lines: min,
+//       functions: min,
+//       branches: min
+//     }
+//   };
+// }
 
 // Set the React environment to 'test'.
 process.env.BABEL_ENV = 'test';

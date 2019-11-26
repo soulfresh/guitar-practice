@@ -6,7 +6,7 @@ import PageLoaderPageObject from './PageLoader.page-object';
 import Loader from './Loader.jsx';
 
 describe('Loader', function() {
-  let page, loader, app;
+  let page, app;
 
   beforeEach(function() {
     page = new LoaderPageObject();
