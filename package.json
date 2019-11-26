@@ -79,7 +79,7 @@
     "eslint-ci": "eslint --config './.eslintrc.js' 'src/**/*.{js,jsx}'",
     "test": "karma start --reporters=progress,coverage,kjhtml --coverageType=summary",
     "test-debug": "karma start --reporters=progress,kjhtml --jasmine-timeout=300000 --browser-loglevel=debug",
-    "test-ci": "karma start --progress=false --singleRun=true --browsers=Firefox --reporters=spec,junit,coverage --coverageType=ci",
+    "test-ci": "karma start --progress=false --singleRun=true --browsers=Chrome --reporters=spec,junit,coverage --coverageType=ci",
     "coverage": "karma start --singleRun=true --reporters=dots,coverage --coverageType=ci",
     "validate": "yarn validate-ci && yarn build-storybook",
     "validate-ci": "yarn lint-ci && yarn test-ci && yarn analyze",
