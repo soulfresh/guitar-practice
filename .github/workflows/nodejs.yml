@@ -1,0 +1,34 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Cache
+      uses: actions/cache@v1.0.3
+      with:
+        # A directory to store and save the cache
+        path: ~/project_cache
+        # An explicit key for restoring and saving the cache
+        key: v1-dependencies-{{ checksum "yarn.lock" }}-{{ checksum ".nvmrc" }}
+        # An ordered list of keys to use for restoring the cache if no cache hit occurred for key
+        restore-keys: v1-dependencies-
+    - name: yarn install, build, and test
+      run: |
+        yarn install
+        yarn validate-ci
+      env:
+        CI: true
