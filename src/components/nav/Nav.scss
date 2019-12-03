@@ -27,6 +27,8 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: layer(above);
+    background-color: background();
   }
 
   .menu-item {
@@ -43,5 +45,13 @@
     &:hover {
       background-color: background(hover);
     }
+  }
+
+  .content {
+    overflow-x: hidden;
+  }
+
+  .overlay {
+    z-index: layer(floating);
   }
 }

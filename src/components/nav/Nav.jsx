@@ -53,6 +53,7 @@ export default function Nav({
       rootClassName="nav"
       sidebarClassName="sidebar"
       contentClassName="content"
+      overlayClassName="overlay"
       styles={sidebarStyles}
     >
       <button

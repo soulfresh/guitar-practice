@@ -94,7 +94,9 @@
     "build-storybook": "build-storybook -s public",
     "deploy-storybook": "storybook-to-ghpages",
     "deploy-storybook-ci": "storybook-to-ghpages -- --ci",
-    "release": "gh-pages -d build"
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
+    "release": "yarn deploy"
   },
   "storybook-deployer": {
     "commitMessage": "Deploy Storybook [skip ci]"

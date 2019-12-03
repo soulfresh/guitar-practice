@@ -42,7 +42,7 @@ export default function Main({
   const pages = [{
     name: 'Note Names', path: getRoute('NOTES'), component: Home
   }, {
-    name: 'Triads', path: getRoute('MAJOR_TRIADS'), component: MajorTriads
+    name: 'Major Triads', path: getRoute('MAJOR_TRIADS'), component: MajorTriads
   }];
 
   const routes = pages.map((p, i) => <Route {...p} key={i} />);

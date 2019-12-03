@@ -3,23 +3,35 @@
 .main-layout {
   .big-note {
     font-family: font-family(title);
-    font-size: 350px;
+    font-size: 160px;
     cursor: pointer;
     text-align: center;
+
+    @include breakpoint-up(sm) {
+      font-size: 350px;
+    }
   }
 
   .controls {
     padding: size(m);
     text-align: center;
+
+    label {
+      display: block;
+      margin: size(s) 0;
+    }
   }
 
   .guitar-display {
     display: flex;
     flex-direction: column;
     padding: size(m);
+    max-width: 300px;
+    margin: 0 auto;
 
     @include breakpoint-up(md) {
       flex-direction: row;
+      max-width: none;
 
       .string-select {
         flex-direction: column-reverse;
