@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/guitar-practice/static/css/main.182bdaca.chunk.css",
-    "main.js": "/guitar-practice/static/js/main.2132398f.chunk.js",
-    "main.js.map": "/guitar-practice/static/js/main.2132398f.chunk.js.map",
-    "runtime-main.js": "/guitar-practice/static/js/runtime-main.dced66f5.js",
-    "runtime-main.js.map": "/guitar-practice/static/js/runtime-main.dced66f5.js.map",
+    "main.css": "/guitar-practice/static/css/main.000560be.chunk.css",
+    "main.js": "/guitar-practice/static/js/main.f3e8e206.chunk.js",
+    "main.js.map": "/guitar-practice/static/js/main.f3e8e206.chunk.js.map",
+    "runtime-main.js": "/guitar-practice/static/js/runtime-main.0e603751.js",
+    "runtime-main.js.map": "/guitar-practice/static/js/runtime-main.0e603751.js.map",
     "static/js/2.197e9e7e.chunk.js": "/guitar-practice/static/js/2.197e9e7e.chunk.js",
     "static/js/2.197e9e7e.chunk.js.map": "/guitar-practice/static/js/2.197e9e7e.chunk.js.map",
     "static/css/3.9b354449.chunk.css": "/guitar-practice/static/css/3.9b354449.chunk.css",
-    "static/js/3.417e9104.chunk.js": "/guitar-practice/static/js/3.417e9104.chunk.js",
-    "static/js/3.417e9104.chunk.js.map": "/guitar-practice/static/js/3.417e9104.chunk.js.map",
+    "static/js/3.8233e345.chunk.js": "/guitar-practice/static/js/3.8233e345.chunk.js",
+    "static/js/3.8233e345.chunk.js.map": "/guitar-practice/static/js/3.8233e345.chunk.js.map",
     "index.html": "/guitar-practice/index.html",
-    "precache-manifest.1b8c39de5806e3f9b43e65dc78a2f45c.js": "/guitar-practice/precache-manifest.1b8c39de5806e3f9b43e65dc78a2f45c.js",
+    "precache-manifest.93dfd368f5f12229d55ea15f7b37f4b2.js": "/guitar-practice/precache-manifest.93dfd368f5f12229d55ea15f7b37f4b2.js",
     "service-worker.js": "/guitar-practice/service-worker.js",
     "static/css/3.9b354449.chunk.css.map": "/guitar-practice/static/css/3.9b354449.chunk.css.map",
-    "static/css/main.182bdaca.chunk.css.map": "/guitar-practice/static/css/main.182bdaca.chunk.css.map",
+    "static/css/main.000560be.chunk.css.map": "/guitar-practice/static/css/main.000560be.chunk.css.map",
     "static/media/check-circle.ce63c045.svg": "/guitar-practice/static/media/check-circle.ce63c045.svg",
     "static/media/circle.d3a07084.svg": "/guitar-practice/static/media/circle.d3a07084.svg",
     "static/media/menu.ca394ec8.svg": "/guitar-practice/static/media/menu.ca394ec8.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.dced66f5.js",
+    "static/js/runtime-main.0e603751.js",
     "static/js/2.197e9e7e.chunk.js",
-    "static/css/main.182bdaca.chunk.css",
-    "static/js/main.2132398f.chunk.js"
+    "static/css/main.000560be.chunk.css",
+    "static/js/main.f3e8e206.chunk.js"
   ]
 }

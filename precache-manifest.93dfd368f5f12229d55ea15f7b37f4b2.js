@@ -1,31 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7b3db1a9cac56530fa97876dbd60b098",
+    "revision": "ff2fb6f620af34e65f0aa8d4d7afc8be",
     "url": "/guitar-practice/index.html"
   },
   {
-    "revision": "8d1c47f9df54502d1cd9",
+    "revision": "3a673f0a4744080d3b65",
     "url": "/guitar-practice/static/css/3.9b354449.chunk.css"
   },
   {
-    "revision": "636e8e4bcea21d93821d",
-    "url": "/guitar-practice/static/css/main.182bdaca.chunk.css"
+    "revision": "36585ecd2bfe03cbbe2d",
+    "url": "/guitar-practice/static/css/main.000560be.chunk.css"
   },
   {
     "revision": "9ea631d1e7e64becee7e",
     "url": "/guitar-practice/static/js/2.197e9e7e.chunk.js"
   },
   {
-    "revision": "8d1c47f9df54502d1cd9",
-    "url": "/guitar-practice/static/js/3.417e9104.chunk.js"
+    "revision": "3a673f0a4744080d3b65",
+    "url": "/guitar-practice/static/js/3.8233e345.chunk.js"
   },
   {
-    "revision": "636e8e4bcea21d93821d",
-    "url": "/guitar-practice/static/js/main.2132398f.chunk.js"
+    "revision": "36585ecd2bfe03cbbe2d",
+    "url": "/guitar-practice/static/js/main.f3e8e206.chunk.js"
   },
   {
-    "revision": "1f2ac7d796f3684de8db",
-    "url": "/guitar-practice/static/js/runtime-main.dced66f5.js"
+    "revision": "182fe3b297a2ab036d44",
+    "url": "/guitar-practice/static/js/runtime-main.0e603751.js"
   },
   {
     "revision": "ce63c0459a272d8301b186ec73db37e7",
