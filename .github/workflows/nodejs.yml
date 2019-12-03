@@ -24,7 +24,7 @@ jobs:
         # A directory to store and save the cache
         path: ~/project_cache
         # An explicit key for restoring and saving the cache
-        key: v1-dependencies-${{ hashFiles("yarn.lock") }}-${{ hashFiles(".nvmrc") }}
+        key: v1-dependencies-${{ hashFiles('./yarn.lock') }}-${{ hashFiles('./.nvmrc') }}
         # An ordered list of keys to use for restoring the cache if no cache hit occurred for key
         restore-keys: v1-dependencies-
     - name: Install
