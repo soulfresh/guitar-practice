@@ -19,16 +19,19 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Cache
       uses: actions/cache@v1.0.3
+      id: cache
       with:
         # A directory to store and save the cache
         path: ~/project_cache
         # An explicit key for restoring and saving the cache
-        key: v1-dependencies-{{ checksum "yarn.lock" }}-{{ checksum ".nvmrc" }}
+        key: v1-dependencies-${{ checksum "yarn.lock" }}-${{ checksum ".nvmrc" }}
         # An ordered list of keys to use for restoring the cache if no cache hit occurred for key
         restore-keys: v1-dependencies-
-    - name: yarn install, build, and test
+    - name: Install
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: yarn install
+    - name: Deploy GH Pages
       run: |
-        yarn install
         yarn build
         yarn release
       env:

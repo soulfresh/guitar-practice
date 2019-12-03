@@ -9,6 +9,8 @@
  */
 export const Routes = new Map([
   [ 'HOME'          , {path: '/'}],
+  [ 'NOTES'         , {path: '/notes'}],
+  [ 'MAJOR_TRIADS'  , {path: '/major-triads'}],
   [ 'LOGIN'         , {path: '/login'}],
 ]);
 

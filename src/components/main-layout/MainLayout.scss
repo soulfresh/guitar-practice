@@ -1,0 +1,33 @@
+@import 'theme';
+
+.main-layout {
+  .big-note {
+    font-family: font-family(title);
+    font-size: 350px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .controls {
+    padding: size(m);
+    text-align: center;
+  }
+
+  .guitar-display {
+    display: flex;
+    flex-direction: column;
+    padding: size(m);
+
+    @include breakpoint-up(md) {
+      flex-direction: row;
+
+      .string-select {
+        flex-direction: column-reverse;
+      }
+    }
+
+    .guitar-neck {
+      flex: 1;
+    }
+  }
+}

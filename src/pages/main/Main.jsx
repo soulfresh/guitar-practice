@@ -12,10 +12,12 @@ import createStore from '../../store';
 import { getRoute } from '../../store/routes';
 import {
   PageLoader,
+  Nav
 } from '~components';
 import {
   NotFound,
   Home,
+  MajorTriads,
 } from '~pages';
 
 import './Main.scss';
@@ -37,15 +39,26 @@ export default function Main({
     store = createStore(handleAuthFailure);
   }
 
+  const pages = [{
+    name: 'Note Names', path: getRoute('NOTES'), component: Home
+  }, {
+    name: 'Triads', path: getRoute('MAJOR_TRIADS'), component: MajorTriads
+  }];
+
+  const routes = pages.map((p, i) => <Route {...p} key={i} />);
+
   return (
     <div className="main">
       <Provider store={store}>
         <Router history={history}>
           <Suspense fallback={<PageLoader />}>
-            <Switch>
-              <Route component={Home} path={getRoute('HOME')} exact />
-              <Route component={NotFound} />
-            </Switch>
+            <Nav pages={pages}>
+              <Switch>
+                <Route component={Home} path={getRoute('HOME')} exact />
+                { routes }
+                <Route component={NotFound} />
+              </Switch>
+            </Nav>
           </Suspense>
         </Router>
       </Provider>

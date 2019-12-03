@@ -6,12 +6,20 @@ import {
 } from '~components';
 
 import {
+  notesInAnOctive,
+  majorTriad,
+  chordDefinition,
+  chordFretIndexes,
+  addOctives,
+} from '~store';
+
+import {
   useNoteTimer,
 } from '~util';
 
-import './Home.scss';
+import './MajorTriads.scss';
 
-export function Home({
+export function MajorTriads({
   fretCount,
   tuning,
   setTuning,
@@ -34,10 +42,20 @@ export function Home({
     resetTimer(!useSharps);
   };
 
+  const string = Math.round(Math.random() * 3);
+  let grouped = chordDefinition(majorTriad(note), string, 0, tuning);
+  const indexes = chordFretIndexes(tuning, grouped);
+  const maxFret = Math.max.apply(Math, indexes);
+
+  // See if we can add any additional octives.
+  if (maxFret + notesInAnOctive < fretCount) {
+    grouped = addOctives([grouped], maxFret, fretCount);
+  }
+
   return (
     <MainLayout
       note={note}
-      notesToShow={note}
+      notesToShow={grouped}
       onNextNote={nextNote}
       tuning={tuning}
       currentStrings={currentStrings}
@@ -51,12 +69,10 @@ export function Home({
   );
 }
 
-
 export default function Connected() {
   return (
     <WithPreferences>
-      <Home />
+      <MajorTriads />
     </WithPreferences>
   );
 }
-

@@ -1,0 +1,47 @@
+@import 'theme';
+
+.nav {
+  .sidebar {
+    background-color: background();
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 200px;
+
+    .title {
+      padding: size(m);
+      border-bottom: 1px solid foreground(divider);
+      margin: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .active {
+      background-color: color(primary, 200);
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  .menu-toggle {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .menu-item {
+    color: foreground();
+    background-color: transparent;
+    box-sizing: border-box;
+    width: 100%;
+
+    border-radius: 0;
+    transition: background-color speed(s) linear;
+
+    &:focus,
+    &:active,
+    &:hover {
+      background-color: background(hover);
+    }
+  }
+}

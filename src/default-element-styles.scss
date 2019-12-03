@@ -39,7 +39,7 @@ a.button {
   &:hover,
   &:focus,
   &:active {
-    color: foreground-dark();
+    color: foreground();
     text-decoration: none;
   }
 }
