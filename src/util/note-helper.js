@@ -30,6 +30,8 @@ export function generateShuffledNotes(includeSharps, previous) {
 
 export function useNoteTimer(speed, useSharps) {
   const [{index, shuffledNotes, timer}, setState] = React.useReducer(
+    // TODO This always re-renders even if the new values are the same as previous
+    // because this function always returns a new object.
     (state, newState) => ({...state, ...newState}),
     {},
     () => ({
