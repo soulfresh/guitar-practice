@@ -11,7 +11,7 @@
     "node": ">=11.10.1"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "nk-request-timeout": "^1.0.1",
     "react": "^16.8.6",
     "react-classset": "^0.0.2",
